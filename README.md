@@ -264,13 +264,3 @@ Refer to a table with `\ref{tab:T2_first_stage}`. Real-data tables are server ou
 
 ---
 
-## 8. Troubleshooting
-
-| Message | Meaning and fix |
-|---|---|
-| `missing input IN_...: <path>` | That input file isn't at the path in `00_paths.do`. Find it (`dir "<folder>/*name*"`) and fix the path. |
-| `this is version 15.1 of Stata; it cannot run version 16.0 programs` | The `ddml` package was called on Stata 15. Restart Stata (`clear all`, `macro drop _all`) and make sure the current `00_programs.do` and `00_params.do` are in place, so the manual engine is used. |
-| `manual DDML: ... learners:` (empty) / `no observations` | An old `00_params.do` is loaded. Replace it and restart Stata. |
-| `0 values to be Winsorized` | A cell with fewer than 100 scores reached `winsor`. The current build files skip such cells with a message. |
-| `variable ... not found` | A variable name differs in your input files. Rows of balance and control lists are skipped with a message; core variables must be renamed in `00_params.do` or the build script. |
-
